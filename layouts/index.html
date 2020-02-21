@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="hs-demo container">
+  <div class="columns">
+    <div class="column is-one-quarter">
+      {{ $searchConfig := site.Params.searchConfig | jsonify }}
+      <div class="hs-container" x-data="initSearch({{ $searchConfig }})" id="search-main" data-turbolinks-permanent>
+        <div class="hs-field field">
+          <div class="hs-control control">
+            <input class="hs-input input is-large" type="search" x-model="query" x-on:keyup="search()" class="hs-input"
+              placeholder="Search..." />
+          </div>
+        </div>
+        <div x-show="query" class="hs-result-outer" style="display: none;">
+          <div x-show.transition="results" class="hs-result-inner">
+            <template x-if="results">
+              <template x-for="item in results.first.hits" :key="item">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-2by3">
+                      <img x-bind:src="item.image">
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media-content">
+                      <p class="title is-4" x-html="item.title"></p>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column" x-data="{ facets: null }" id="search-facets" data-turbolinks-permanent>
+      <div @searchresult.document="genre = event.detail.first.facets.genre; facets = Object.keys(genre).map((key) => [key, genre[key]]);">
+        <template x-if="facets">
+          <template x-for="facet in facets" :key="facet">
+            <p x-html="facet"></p>
+          </template>
+        </template>
+      </div>
+    </div>
+  </div>
+  {{ end }}

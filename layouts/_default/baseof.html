@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{ hugo.Generator }}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {{ .Title }}</title>
+    <link rel="shortcut icon" href="TODO" type="image/x-icon">
+    {{- template "_internal/opengraph.html" . -}}
+    {{- template "_internal/schema.html" . -}}
+    {{- template "_internal/twitter_cards.html" . -}}
+    {{ $options := dict }}
+    {{ $isProd :=  eq hugo.Environment "production "}}
+    {{ $enableSourceMap := not $isProd }}
+    {{ $options := (dict "targetPath" "css/styles.css" "enableSourceMap" $enableSourceMap) }}
+    {{ $styles := resources.Get "scss/hs-styles.scss" }}
+    {{ $styles = $styles | resources.ToCSS $options }}
+    {{ if eq hugo.Environment "production "}}
+    {{ $styles = $styles | minify }}
+    {{ end }}
+    <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+    {{ partial "jslibs/alpinejs/script-src.html" }}
+    {{ partial "jslibs/turbolinks/script-src.html" }}
+    {{- $isProd := eq hugo.Environment "production" -}}
+    {{- $js := resources.Get "js/hs-app.js" -}}
+    {{- if $isProd }}{{ $js = $js | minify | fingerprint }}{{ end -}}
+    <script src="{{ $js.RelPermalink }}" {{ if $isProd }} integrity="{{ $js.Data.Integrity }}" {{ end }}
+        crossorigin="anonymous" defer></script>
+</head>
+
+<body class="hugo-{{ .Kind }}">
+    {{ block "main" . }}{{ end }}
+</body>
+
+</html>
