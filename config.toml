@@ -18,7 +18,5 @@ path = "github.com/bep/hugo-jslibs/alpinejs"
 [[module.imports]]
 path = "github.com/bep/hugo-jslibs/turbolinks"
 [[module.imports]]
-path = "github.com/jgthms/bulma"
-[[module.imports.mounts]]
-source = "bulma.sass"
-target = "assets/scss/bulma.sass"
+path = "github.com/gohugoio/hugo-bootstrap-scss-v4"
+

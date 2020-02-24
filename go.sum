@@ -13,6 +13,9 @@ github.com/bep/hugo-jslibs/alpinejs v0.4.0/go.mod h1:mC7TWTMQumrHkG/Zyi9/1AQJIvC
 github.com/bep/hugo-jslibs/alpinejs_turbolinks v0.2.0/go.mod h1:7ezFucxdiCYdrQE8LtGhvBCk+TQ7s1LwMjslEMGv3c0=
 github.com/bep/hugo-jslibs/turbolinks v0.1.0 h1:GC8uyvyKGyQVfUgRGno7GiWU+4dGrcP3/snQv//5FEk=
 github.com/bep/hugo-jslibs/turbolinks v0.1.0/go.mod h1:CQHa51PjmF5gavvhS3JKSE9ywo8h7QgOj3D88ry6qu0=
+github.com/gohugoio/hugo-bootstrap-scss-v4 v0.0.0-20200224141741-a3860c702707 h1:9LSMFvPK8rhPNjN86JOlVfFbVocuEIRWaoqG+qRgjMg=
+github.com/gohugoio/hugo-bootstrap-scss-v4 v0.0.0-20200224141741-a3860c702707/go.mod h1:r9GaF8zqeBS8nnb8NJHNUGL71RusNbp5ZcbFRfrsTkA=
+github.com/gohugoio/hugo-bootstrap-scss-v4 v0.0.0-20200224142152-57d87ae59f2e/go.mod h1:r9GaF8zqeBS8nnb8NJHNUGL71RusNbp5ZcbFRfrsTkA=
 github.com/jgthms/bulma v0.0.0-20200206142631-0c43b9e4663a/go.mod h1:89FLBKXYFKfOKAoDeUT26V0pHGwzr205cMXAEqtAVOI=
 github.com/jgthms/bulma v0.0.0-20200223141911-6d6e5e58530e h1:Wfmuu2XPut2FvwJR5/ZUMsOz1oYXRKM7/LpeaZ5hU68=
 github.com/jgthms/bulma v0.0.0-20200223141911-6d6e5e58530e/go.mod h1:89FLBKXYFKfOKAoDeUT26V0pHGwzr205cMXAEqtAVOI=
