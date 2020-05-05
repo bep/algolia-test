@@ -6,8 +6,12 @@
       <div class="hs-container" x-data="initSearch({{ $searchConfig }})" id="search-main" data-turbolinks-permanent>
         <div class="input-group input-group-lg mb-5">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Search</span>
+            <span class="input-group-text" id="inputGroup-sizing-lg">
+              {{ $icon := resources.Get "svg/heroicons/outline-md/md-search.svg" }}
+              {{ $icon.Content | safeHTML }}
+            </span>
           </div>
+          
           <input type="search" x-model="query" x-on:keyup="search()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
 

@@ -5,9 +5,7 @@ go 1.13
 require (
 	github.com/bep/hugo-jslibs/alpinejs v0.4.0 // indirect
 	github.com/bep/hugo-jslibs/turbolinks v0.1.0 // indirect
-	github.com/gohugoio/hugo-bootstrap-scss-v4 v0.0.0-20200224142152-57d87ae59f2e // indirect
-	github.com/jgthms/bulma v0.0.0-20200223141911-6d6e5e58530e // indirect
-	github.com/twbs/bootstrap v4.2.1+incompatible // indirect
+	github.com/gohugoio/hugo-mod-bootstrap-scss-v4 v0.0.0-20200224171633-fc89315b7997 // indirect
+	github.com/gohugoio/hugo-mod-heroicons v0.0.0-20200224175223-0413a8ce1f00 // indirect
+	github.com/refactoringui/heroicons v0.0.0-20200224150050-2abb8143c5cf // indirect
 )
-
-replace github.com/gohugoio/hugo-bootstrap-scss-v4 => /Users/bep/dev/go/gohugoio/hugo-bootstrap-scss-v4
