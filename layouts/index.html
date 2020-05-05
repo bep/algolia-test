@@ -11,8 +11,9 @@
               {{ $icon.Content | safeHTML }}
             </span>
           </div>
-          
-          <input type="search" x-model="query" x-on:keyup="search()" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+
+          <input type="search" x-model="query" @keyup.debounce.100ms="search()" class="form-control" aria-label="Large"
+            aria-describedby="inputGroup-sizing-sm">
         </div>
 
         <div x-show="query" class="hs-result-outer" style="display: none;">
@@ -20,10 +21,10 @@
             <template x-if="results">
               <template x-for="item in results.first.hits" :key="item">
                 <div class="card" style="width: 18rem;">
-                      <img x-bind:src="item.image" class="card-img-top">
-                
+                  <img x-bind:src="item.image" class="card-img-top">
+
                   <div class="card-body">
-                      <h5 class="card-title" x-html="item.title"></h5>
+                    <h5 class="card-title" x-html="item.title"></h5>
                   </div>
                 </div>
               </template>
@@ -33,7 +34,8 @@
       </div>
     </div>
     <div class="col" x-data="{ facets: null }" id="search-facets" data-turbolinks-permanent>
-      <div @searchresult.document="genre = event.detail.first.facets.genre; facets = Object.keys(genre).map((key) => [key, genre[key]]);">
+      <div
+        @searchresult.document="genre = event.detail.first.facets.genre; facets = Object.keys(genre).map((key) => [key, genre[key]]);">
         <template x-if="facets">
           <template x-for="facet in facets" :key="facet">
             <p x-html="facet"></p>

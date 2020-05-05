@@ -1,4 +1,6 @@
 github.com/alpinejs/alpine v2.0.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
+github.com/alpinejs/alpine v2.3.3+incompatible h1:bHL8a6MwKpT1p/lLJn/gwCpKI/b5yHizp0+EeofUOIU=
+github.com/alpinejs/alpine v2.3.3+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/bep/hugo-jslibs/alpinejs v0.4.0 h1:8TJwyZgvbi4gUIB+AOWC6SZL4o7GBVp9osU6Cv2Zby8=
 github.com/bep/hugo-jslibs/alpinejs v0.4.0/go.mod h1:mC7TWTMQumrHkG/Zyi9/1AQJIvCWqAT04Sp/+4+Ac6Q=
 github.com/bep/hugo-jslibs/turbolinks v0.1.0 h1:GC8uyvyKGyQVfUgRGno7GiWU+4dGrcP3/snQv//5FEk=
