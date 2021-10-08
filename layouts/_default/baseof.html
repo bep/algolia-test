@@ -8,20 +8,19 @@
     <title>
       {{ .Title }}
     </title>
-    <link rel="shortcut icon" href="TODO" type="image/x-icon">
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
     {{- template "_internal/twitter_cards.html" . -}}
     {{ $options := dict }}
     {{ $enableSourceMap := not hugo.IsProduction }}
     {{ $options := (dict "targetPath" "css/styles.css" "enableSourceMap" $enableSourceMap) }}
-    {{ $styles := resources.Get "scss/hs-styles.scss" }}
+    {{ $styles := resources.Get "scss/styles.scss" }}
     {{ $styles = $styles | resources.ToCSS $options }}
     {{ if eq hugo.Environment "production "}}
       {{ $styles = $styles | minify }}
     {{ end }}
     <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
-    {{- $js := resources.Get "js/hs-app.js" -}}
+    {{- $js := resources.Get "js/index.js" -}}
     {{ $params := (dict "search_config" site.Params.search_config "is_production" hugo.IsProduction ) }}
     {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
     {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2016" "params" $params }}

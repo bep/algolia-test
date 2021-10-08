@@ -24,10 +24,6 @@ function newSearchController(cfg) {
 			});
 		},
 		search: function() {
-			if (!this.query) {
-				return;
-			}
-
 			var queries = {
 				requests: [
 					{ indexName: cfg.index, facets: [ 'genre' ], params: `query=${encodeURIComponent(this.query)}` }
@@ -50,9 +46,11 @@ function newSearchController(cfg) {
 					if (data.results) {
 						this.result = data.results[0];
 						let genre = this.result.facets.genre;
-						this.result.genre = Object.keys(genre).map((key) => {
-							return { k: key, v: genre[key] };
-						});
+						this.result.genre = genre
+							? Object.keys(genre).map((key) => {
+									return { k: key, v: genre[key] };
+								})
+							: [];
 					}
 				});
 		}
