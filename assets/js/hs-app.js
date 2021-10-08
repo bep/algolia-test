@@ -1,14 +1,32 @@
-function initSearch(cfg) {
+import Alpine from 'jslibs/alpinejs/v3/alpinejs/dist/module.esm.js';
+import * as params from '@params';
+
+// Set up and start Alpine.
+(function() {
+	const searchConfig = params.search_config;
+
+	// Register AlpineJS data controllers.
+	Alpine.data('searchController', () => newSearchController(searchConfig));
+
+	// Start Alpine.
+	Alpine.start();
+})();
+
+function newSearchController(cfg) {
 	return {
 		query: '',
-		loading: true,
-		results: null,
+		result: { hits: [] },
+		init: function() {
+			return this.$nextTick(() => {
+				this.$watch('query', () => {
+					this.search();
+				});
+			});
+		},
 		search: function() {
 			if (!this.query) {
 				return;
 			}
-
-			this.loading = true;
 
 			var queries = {
 				requests: [
@@ -29,37 +47,14 @@ function initSearch(cfg) {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					this.results = null;
 					if (data.results) {
-						this.results = {
-							first: data.results[0]
-						};
-
-						var event = new CustomEvent('searchresult', {
-							bubbles: true,
-							cancelable: true,
-							detail: this.results
+						this.result = data.results[0];
+						let genre = this.result.facets.genre;
+						this.result.genre = Object.keys(genre).map((key) => {
+							return { k: key, v: genre[key] };
 						});
-
-						document.dispatchEvent(event);
 					}
-
-					this.loading = false;
 				});
 		}
-	};
-}
-
-function debounce(func, wait) {
-	var timeout;
-	return function() {
-		var context = this,
-			args = arguments;
-		var later = function() {
-			timeout = null;
-			func.apply(context, args);
-		};
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
 	};
 }

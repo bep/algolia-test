@@ -1,47 +1,30 @@
 {{ define "main" }}
-<div class="hs-demo container">
+<div class="hs-demo container" x-data="searchController" id="search-main">
   <div class="row">
     <div class="col">
-      {{ $searchConfig := site.Params.searchConfig | jsonify }}
-      <div class="hs-container" x-data="initSearch({{ $searchConfig }})" id="search-main" data-turbolinks-permanent>
+      <div class="hs-container">
         <div class="input-group input-group-lg mb-5">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">
-              {{ $icon := resources.Get "svg/heroicons/outline-md/md-search.svg" }}
-              {{ $icon.Content | safeHTML }}
-            </span>
-          </div>
-
-          <input type="search" x-model="query" @keyup.debounce.100ms="search()" class="form-control" aria-label="Large"
-            aria-describedby="inputGroup-sizing-sm">
+          <input type="search" x-model.debounce.100ms="query" class="form-control" aria-label="Large"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Search ...">
         </div>
-
         <div x-show="query" class="hs-result-outer" style="display: none;">
-          <div x-show.transition="results" class="hs-result-inner">
-            <template x-if="results">
-              <template x-for="item in results.first.hits" :key="item">
-                <div class="card" style="width: 18rem;">
-                  <img x-bind:src="item.image" class="card-img-top">
-
-                  <div class="card-body">
-                    <h5 class="card-title" x-html="item.title"></h5>
-                  </div>
-                </div>
-              </template>
+          <div x-transition.opacity x-show="result.hits.length > 0" class="hs-result-inner">
+            <template x-for="item in result.hits" :key="item.objectID">
+              <h5 class="card-title" x-text="item.title"></h5>
             </template>
           </div>
         </div>
       </div>
     </div>
-    <div class="col" x-data="{ facets: null }" id="search-facets" data-turbolinks-permanent>
-      <div
-        @searchresult.document="genre = event.detail.first.facets.genre; facets = Object.keys(genre).map((key) => [key, genre[key]]);">
-        <template x-if="facets">
-          <template x-for="facet in facets" :key="facet">
-            <p x-html="facet"></p>
-          </template>
+    <div class="col"  id="search-facets">
+      <ul class="list-group">
+        <template x-for="g in result.genre" :key="g.k">
+          <li class="list-group-item">
+            <span x-text="g.k"></span>
+            <span class=" " x-text="g.v"></span>
+          </li>
         </template>
-      </div>
+      </ul>
     </div>
   </div>
-  {{ end }}
+{{ end }}

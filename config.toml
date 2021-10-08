@@ -2,7 +2,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 sectionPagesMenu = "main"
 
 [params]
-[params.searchConfig]
+[params.search_config]
 app_id = "latency"
 api_key = "56f24e4276091e774e8157fe4b8b11f6"
 index = "movies"
@@ -14,12 +14,9 @@ anchor = "smart"
 
 [module]
 [[module.imports]]
-path = "github.com/bep/hugo-jslibs/alpinejs"
+path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
 [[module.imports]]
-path = "github.com/bep/hugo-jslibs/turbolinks"
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-bootstrap-scss-v4"
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-heroicons"
+path = "github.com/gohugoio/hugo-mod-bootstrap-scss-v5"
+
 
 
