@@ -1,0 +1,13 @@
+[build]
+publish = "public"
+command = "hugo --gc"
+
+[build.environment]
+HUGO_VERSION = "0.88.0"
+HUGO_ENVIRONMENT = "development"
+
+[context.deploy-preview]
+command = "hugo --gc --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+command = "hugo --gc -b $DEPLOY_PRIME_URL"
