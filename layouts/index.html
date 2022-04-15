@@ -1,28 +1,38 @@
 {{ define "main" }}
-<div class="hs-demo container" x-data="searchController" id="search-main">
-  <div class="row">
-    <div class="col">
-      <div class="hs-container">
-        <div class="input-group input-group-lg mb-5">
-          <input type="search" x-model.debounce.100ms="query" @click="search()" class="form-control" aria-label="Large"
-            aria-describedby="inputGroup-sizing-sm" placeholder="Search ...">
-        </div>
-        <div x-transition.opacity x-show="result.hits.length > 0" class="hs-result-inner">
-          <template x-for="item in result.hits" :key="item.objectID">
-            <h5 class="card-title" x-text="item.title"></h5>
-          </template>
+  <div class="hs-demo container" x-data="searchController" id="search-main">
+    <div class="row">
+      <div class="col">
+        <div class="hs-container">
+          <div class="input-group input-group-lg mb-5">
+            <input
+              type="search"
+              x-model="query"
+              @click="search()"
+              class="form-control"
+              aria-label="Large"
+              aria-describedby="inputGroup-sizing-sm"
+              placeholder="Search ..." />
+          </div>
+          <div
+            x-transition.opacity
+            x-show="result.hits.length > 0"
+            class="hs-result-inner">
+            <template x-for="item in result.hits" :key="item.objectID">
+              <h5 class="card-title" x-text="item.title"></h5>
+            </template>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col"  id="search-facet">
-      <ul class="list-group">
-        <template x-for="g in result.genre" :key="g.k">
-          <li class="list-group-item">
-            <span x-text="g.k"></span>
-            <span class="badge rounded-pill bg-info" x-text="g.v"></span>
-          </li>
-        </template>
-      </ul>
+      <div class="col" id="search-facet">
+        <ul class="list-group">
+          <template x-for="g in result.genre" :key="g.k">
+            <li class="list-group-item">
+              <span x-text="g.k"></span>
+              <span class="badge rounded-pill bg-info" x-text="g.v"></span>
+            </li>
+          </template>
+        </ul>
+      </div>
     </div>
   </div>
 {{ end }}
