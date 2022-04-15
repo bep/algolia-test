@@ -2,9 +2,9 @@
 <html>
   <head>
     {{ hugo.Generator }}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
       {{ .Title }}
     </title>
@@ -16,19 +16,17 @@
     {{ $options := (dict "targetPath" "css/styles.css" "enableSourceMap" $enableSourceMap) }}
     {{ $styles := resources.Get "scss/styles.scss" }}
     {{ $styles = $styles | resources.ToCSS $options }}
-    {{ if eq hugo.Environment "production "}}
+    {{ if hugo.IsProduction }}
       {{ $styles = $styles | minify }}
     {{ end }}
     <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
     {{- $js := resources.Get "js/index.js" -}}
     {{ $params := (dict "search_config" site.Params.search_config "is_production" hugo.IsProduction ) }}
     {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
-    {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2016" "params" $params }}
-    {{ $js = $js | js.Build $opts }}
-    <script src="{{ $js.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $js.Data.Integrity }}"{{ end }} defer></script>
+    {{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2018" "params" $params }}
+    {{ $js = $js | js.Build $opts }}    <script src="{{ $js.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $js.Data.Integrity }}"{{ end }} defer></script>
   </head>
   <body class="hugo-{{ .Kind }}">
     {{ block "main" . }}{{ end }}
   </body>
-  
 </html>

@@ -4,7 +4,6 @@ command = "hugo --gc --minify"
 
 [build.environment]
 HUGO_VERSION = "0.97.0"
-HUGO_ENVIRONMENT = "development"
 
 [context.deploy-preview]
 command = "hugo --gc --buildFuture -b $DEPLOY_PRIME_URL"
