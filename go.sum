@@ -1,6 +1,6 @@
-github.com/gohugoio/hugo-mod-bootstrap-scss-v5 v1.0.0 h1:ImJHfWXVsUkCuull09NqcTpTx5bVnEBYyWlVE04paA0=
-github.com/gohugoio/hugo-mod-bootstrap-scss-v5 v1.0.0/go.mod h1:OkLoYy/rU+UFHFd/TPzRxfgXkaOtqqW+mEQGBUzydk4=
+github.com/gohugoio/hugo-mod-bootstrap-scss/v5 v5.20101.20300 h1:1Xe5fPOjFpMakBfsXKzzKtdu/sfqoM0o7JuSp2l1RiU=
+github.com/gohugoio/hugo-mod-bootstrap-scss/v5 v5.20101.20300/go.mod h1:/FiWjAJyOiVrC2vDur97ogmWIaBB+YS6jH7nf6cm+3E=
 github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.400.200 h1:et5H8AZXT3kxw8K4GI6aIMAE2/eKdALmfcFA1s5sHnA=
 github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.400.200/go.mod h1:WWQxcmPs5Xy3xDgi29ipkmZT6NKVb3bsqyCDTY3eYYY=
-github.com/twbs/bootstrap v5.0.2+incompatible h1:l13Xy0yyiNKqO78G056lHtLHiW+iiN8P7pf4bh4MPwY=
-github.com/twbs/bootstrap v5.0.2+incompatible/go.mod h1:fZTSrkpSf0/HkL0IIJzvVspTt1r9zuf7XlZau8kpcY0=
+github.com/gohugoio/hugo-mod-jslibs-dist/popperjs/v2 v2.21100.20000/go.mod h1:mFberT6ZtcchrsDtfvJM7aAH2bDKLdOnruUHl0hlapI=
+github.com/twbs/bootstrap v5.1.3+incompatible/go.mod h1:fZTSrkpSf0/HkL0IIJzvVspTt1r9zuf7XlZau8kpcY0=
